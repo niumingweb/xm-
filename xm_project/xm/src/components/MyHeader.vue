@@ -35,13 +35,13 @@
         </a>  
       </div>
       <!-- 未登录时显示 -->
-       <div class="top_user" v-show="user==''">
+       <div class="top_user" v-show="uname==''">
         <router-link :to="{path:'/user_log'}">登陆</router-link><span>|</span><router-link :to="{path:'/user_reg'}">注册</router-link><span>|</span><a href="javascript:;" id="top_user_msg">消息通知</a>
       </div>
        <!-- 登录时显示 -->
-      <div class="top_user1" v-show="user">
+      <div class="top_user1" v-show="uname!=''">
         <div class="user_container" @mouseover="arrow_orange" @mouseout="arrow_white">
-        <a href="javascript:;" class="userid">哈哈{{uname}} <svg v-show="active" t="1569056712353" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2689" width="20" height="20"><path d="M944.083879 289.536302c14.264888 18.286482 15.462157 41.208541 2.670829 51.196009l-417.191704 325.421604c-2.885723 2.261507-12.156878 7.828292-13.732769 9.578146-15.544021 17.181311-37.893029 22.338774-49.947576 11.461029l-392.908648-354.309538c-12.054547-10.887978-9.271154-33.666774 6.272867-50.889017 15.544021-17.21201 37.893029-22.349007 49.988508-11.471262l357.584118 322.443783 408.258241-318.463122C907.910005 264.516466 929.84969 271.260054 944.083879 289.536302z" p-id="2690" fill="#b0b0b0"></path></svg>
+        <a href="javascript:;" class="userid"><span class="username">{{uname}}</span> <svg v-show="active" t="1569056712353" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2689" width="20" height="20"><path d="M944.083879 289.536302c14.264888 18.286482 15.462157 41.208541 2.670829 51.196009l-417.191704 325.421604c-2.885723 2.261507-12.156878 7.828292-13.732769 9.578146-15.544021 17.181311-37.893029 22.338774-49.947576 11.461029l-392.908648-354.309538c-12.054547-10.887978-9.271154-33.666774 6.272867-50.889017 15.544021-17.21201 37.893029-22.349007 49.988508-11.471262l357.584118 322.443783 408.258241-318.463122C907.910005 264.516466 929.84969 271.260054 944.083879 289.536302z" p-id="2690" fill="#b0b0b0"></path></svg>
         <svg v-show="active==false" t="1569061963107" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2870" width="20" height="20"><path d="M944.083879 289.536302c14.264888 18.286482 15.462157 41.208541 2.670829 51.196009l-417.191704 325.421604c-2.885723 2.261507-12.156878 7.828292-13.732769 9.578146-15.544021 17.181311-37.893029 22.338774-49.947576 11.461029l-392.908648-354.309538c-12.054547-10.887978-9.271154-33.666774 6.272867-50.889017 15.544021-17.21201 37.893029-22.349007 49.988508-11.471262l357.584118 322.443783 408.258241-318.463122C907.910005 264.516466 929.84969 271.260054 944.083879 289.536302z" p-id="2871" fill="#ff6700"></path></svg>
         </a>
         <ul class="user_drop">
@@ -563,8 +563,8 @@ export default {
    }),
    data(){
      return {
-       active:true,
-       user:''
+       active:true
+       
      }
    },
    methods:{
@@ -573,8 +573,10 @@ export default {
      },
      arrow_white(){
        this.active=true
-     }
+     },
+
    }
+   
 }
 </script>
 
@@ -662,6 +664,11 @@ export default {
   background:#fff;
   height:212px;
   border:1px solid #e0e0e0;
+  
+}
+
+.user_container:hover .username{
+  color:#ff6700;
 }
 .user_container{
   width:100px;
@@ -671,9 +678,23 @@ export default {
   left:-94px;
   overflow: hidden;
 }
+.userid .username{
+  display:block;
+  width:40px;
+  float:left;
+  color:#e0e0e0;
+  overflow: hidden;/*自动隐藏文字*/
+  text-overflow: ellipsis;/*文字隐藏后添加省略号*/
+  display: -webkit-box;
+  -webkit-line-clamp:1; /*想要显示的行数*/
+  -webkit-box-orient: vertical;
+  
+}
+
 .userid{
   margin-left:10px;
 }
+
 .top_user1 a{
   padding:0 15px;
 }
