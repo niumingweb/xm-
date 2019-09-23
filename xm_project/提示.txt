@@ -1,0 +1,66 @@
+github
+344943259@qq.com
+code niuming1989
+
+git使用前配置
+ git config --global  user.name 用户名
+ git config --global  user.email  邮箱名称
+ git config --list    查看所有配置
+5.git管理命令
+ git init  初始化git仓库，使用git管理当前目录(工作目录)
+ git status  查看文件的状态(是否被跟踪，是否修改)
+ git add 文件名称   追踪文件(放入到暂存区中)
+ git commit -m 自定义说明   把暂存区中的内容提交到本地仓库
+ git log  查看本地仓库中所有的提交记录
+ git reset --hard  编号   向本地仓库中提取信息
+ git reflog   显示所有的提交和恢复记录
+ git checkout 文件名称  从暂存区中恢复文件
+ git rm --cached 文件名称   删除暂存区中文件
+
+
+
+前端
+User_log第200行换成注册并直接登录跳转
+轮播
+注册页面
+详情页面
+详情页面 动态数据
+补全主页
+搜索
+主页动态数据 
+购物车
+分页
+
+index  500line  v-for  出不来
+
+后端
+路由
+注册路由
+详情路由
+商品列表路由（待定）
+
+
+
+数据库
+主页商品
+商品详情
+
+04  index
+05  details  product
+vue 轮播
+https://ask.csdn.net/questions/657013
+/(?!^(\d+|[a-zA-Z]+|[~!@#$%^&*?]+)$)^[\w~!@#$%^&*?]{7,20}$/
+
+传参
+https://blog.csdn.net/heshuaicsdn/article/details/88578899
+
+vuex
+vuex简单应用----点击登录将user用户名传递给另一个页面
+https://blog.csdn.net/weixin_41111987/article/details/84617011
+
+vue模拟登陆功能，vuex登陆后显示用户信息
+https://blog.csdn.net/zezeadede555/article/details/88773583
+
+vuex state及mapState的基础用法详解
+https://www.jb51.net/article/138460.htm
+  
