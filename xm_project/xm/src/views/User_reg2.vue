@@ -69,8 +69,13 @@ export default {
         if(res.data==0){
           alert("密码错误")
         }else{
+          console.log(res.data)
+          var phone1=res.data[0].phone
+          var uname1=res.data[0].uname
+          this.$store.commit("updateuname",uname1)
+          this.$store.commit("updatephone",phone1)
           this.$messagebox("提示", "登录成功").then(res => {
-            this.$router.push({ path: "/index" });
+            this.$router.replace({ path: "/index" });
           });
         }
       })

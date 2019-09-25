@@ -7,6 +7,7 @@ import Test from './views/Test'
 import User_reg from './views/User_reg'
 import User_reg2 from './views/User_reg2'
 import User_reg3 from './views/User_reg3'
+import Cart from './views/Cart'
 Vue.use(Router)
 
 export default new Router({
@@ -18,6 +19,7 @@ export default new Router({
     {path:"/test",component:Test},
     {path:"/user_reg",component:User_reg},
     {path:"/user_reg2",name:'user_reg2',component:User_reg2},
-    {path:"/user_reg3",name:'user_reg3',component:User_reg3}
+    {path:"/user_reg3",name:'user_reg3',component:User_reg3},
+    {path:"/cart",component:Cart}
   ]
 })

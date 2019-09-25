@@ -1290,6 +1290,7 @@ export default {
     flex-flow:column;
     height:614px;
     justify-content: space-between;
+    margin-right:10px;
   }  
   .main_left>ul img{
     width:234px;
@@ -1308,7 +1309,7 @@ export default {
     display:flex;
     justify-content: space-between;
     flex-wrap:wrap;
-    margin-left:10px;
+    
   }
   .main_right>ul li{
     width:234px;

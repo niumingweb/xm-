@@ -1,7 +1,7 @@
 <template>
  <div>
   <div id="logo">
-       <a href="#"><img src="img/user_log/mistore_logo.png" alt=""></a>
+       <a href="javascript:;"><img src="img/user_log/mistore_logo.png" alt=""></a>
   </div>
      <!-- 背景 -->
      <div id="bg">
@@ -205,8 +205,13 @@ export default {
           //留着用手机号直接注册并登陆
           alert("手机号不正确")
         }else{
+          console.log(res.data)
+          var uname1=res.data[0].uname
+          var phone1=res.data[0].phone
+          this.$store.commit("updateuname",uname1)
+          this.$store.commit("updatephone",phone1)
           this.$messagebox("消息","登陆成功").then(res=>{
-            this.$router.push({path:'/index'})
+            this.$router.replace({path:'/index'})
           })
         }
       })
