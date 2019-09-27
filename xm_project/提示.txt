@@ -16,7 +16,7 @@ git使用前配置
  git reflog   显示所有的提交和恢复记录
  git checkout 文件名称  从暂存区中恢复文件
  git rm --cached 文件名称   删除暂存区中文件
-
+ git push origin master
 
 
 前端
@@ -63,4 +63,9 @@ https://blog.csdn.net/zezeadede555/article/details/88773583
 
 vuex state及mapState的基础用法详解
 https://www.jb51.net/article/138460.htm
+
+
+微软雅黑
+大标题2号  小标题4号   加粗加黑
+内容小4 小5
   

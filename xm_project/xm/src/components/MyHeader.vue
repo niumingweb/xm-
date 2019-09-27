@@ -653,7 +653,7 @@ export default {
   padding:0 25px 0 10px;
   cursor: text;
 }
-/*登录时*/
+/*登录后*/
 .top_user1{
   float: right;
   display:flex;
