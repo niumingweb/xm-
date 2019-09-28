@@ -35,8 +35,48 @@
         </div>
       </div>
     </div>
-    <div class="cart_content">
-      
+    <div class="cart_background">
+      <div class="cart_container">
+        <div class="cart_info">
+          <div class="allselect">
+            <i>√</i>    
+            全选
+          </div>
+          <div class="p_holder"></div>
+          <div class="p_title">商品名称</div>
+          <div class="p_price">单价</div>
+          <div class="p_count">数量</div>
+          <div class="p_total">小计</div>
+          <div class="p_handle">操作</div>
+        </div>
+        <div class="cart_item">
+          <div class="item_select">
+            <i>
+              √
+            </i>
+          </div>
+          <div class="item_img">
+            <img src="" alt="">
+          </div>
+          <div class="item_title">
+            <a href="">	
+              Redmi Note 8 6GB+64GB 曜石黑 64GB
+            </a>
+          </div>
+          <div class="item_price">
+            1199元
+          </div>
+          <div class="item_count">
+           
+          </div>
+          <div class="item_total">
+             1199元
+             </div>
+          <div class="item_handle">
+            x
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -194,5 +234,106 @@ export default {
   .deal a{
     color:#757575;
     font-size: 12px;
+  }
+
+  /*购物车下部背景*/
+  .cart_background{
+    min-width:1226px;
+    background:#f5f5f5;
+    padding:35px 0;
+  }
+  .cart_background:before{
+    content:"";
+    display:table;
+  }
+  /*购物车容器*/
+  .cart_container{
+    width:1226px;
+    margin:0 auto;
+    background:#fff;
+  }
+  /*购物车头信息*/
+  div.cart_info{
+    height:70px;
+    padding-right:26px;
+    border-bottom:1px solid #eee;
+  }
+  /*每个div设为行内块*/
+  div.cart_info div{
+    display:inline-block;
+    
+    line-height:70px;
+    font-size:14px;
+    color:#424242;
+  }
+  /*cart_info 下每个div快递*/
+  /*全选宽度*/
+  div.allselect{
+    width:110px;
+    text-align: center;
+  }
+  div.p_holder{
+    width:120px;
+  }
+  div.p_title{
+    width:380px;
+  }
+  div.p_price{
+    width:158px;
+    text-align: center;
+  }
+  div.p_count{
+    width:150px;
+    text-align: center;
+  }
+  div.p_total{
+    width:200px;
+    text-align: center;
+  }
+  div.p_handle{
+    width:80px;
+    text-align: center;
+  }
+  /*具体购物内容*/
+  /*宽度*/
+  div.cart_item{
+    width:1226px;
+  }
+  /*cart_item 下的所有div*/
+  div.cart_item div{
+    display:inline-block;
+    height:86px;
+    vertical-align: middle;
+    line-height: 86px;
+  }
+  /*cart_item 每个div宽度*/
+  .item_select{
+    width:110px;
+    text-align: center;
+  }
+  .item_img{
+    width:120px;
+  }
+  .item_img img{
+    width:80px;
+  }
+  .item_title{
+    width:380px;
+  }
+  .item_price{
+    width:158px;
+    text-align: center;
+  }
+  .item_count{
+    width:150px;
+    text-align: center;
+  }
+  .item_total{
+    width:201px;
+    text-align: center;
+  }
+  .item_handle{
+    width:80px;
+    text-align: center;
   }
 </style>
