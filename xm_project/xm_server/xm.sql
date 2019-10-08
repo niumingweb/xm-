@@ -113,5 +113,15 @@ INSERT INTO star_product VALUES
 (3,'img/xiaomi_danpin/pinpai3.png','小米手机5 64GB','5月9日-10日，下单立减100元','1799'),
 (4,'img/xiaomi_danpin/pinpai4.png','小米电视3s 55英寸','5月9日，下单立减200元','3999'),
 (5,'img/xiaomi_danpin/pinpai5.png','小米笔记本','更轻更薄，像杂志一样随身携带','3599');
-
-
+/*购物车表单*/
+CREATE TABLE cart(
+  uid INT,                                  #用户编号
+  eid INT,                                  #家电品编号
+  ename varchar(32),                        #家电商品名称
+  eprice DECIMAL(10,2),                     #家电商品价格
+  epic VARCHAR(32),                         #家电商品图片
+  ecount INT                                #数量
+);
+INSERT INTO cart VALUES
+(1,1,'小米净水器600G',2199,'img/details/e1.jpg',1),
+(1,2,'米家扫地机器人1S',1999,'img/details/e5.jpg',1);

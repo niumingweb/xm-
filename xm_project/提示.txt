@@ -19,6 +19,21 @@ git使用前配置
  git push origin master
 
 
+ 总结用git remote add origin https://github.com/niumingweb/study.git
+
+
+ git 分支
+
+ git branch  查看分支
+ git checkout -b dev  创建并切换到分支 dev
+ 等同于git branch dev    创建分子 dev
+       git checkout dev  切换到分支dev
+ 
+ git branch  查看分支
+
+
+
+
 前端
 User_log第200行换成注册并直接登录跳转
 轮播
@@ -64,8 +79,16 @@ https://blog.csdn.net/zezeadede555/article/details/88773583
 vuex state及mapState的基础用法详解
 https://www.jb51.net/article/138460.htm
 
+Vue+Element+computed实现购物车
+https://www.cnblogs.com/CinderellaStory/p/10546263.html
 
 微软雅黑
 大标题2号  小标题4号   加粗加黑
 内容小4 小5
-  
+
+
+dataset用法
+
+<mt-button @click="deleteItem" :data-id="item.id">删除</mt-button>
+//(3)将当前商品id传递函数??
+        var id=e.target.dataset.id

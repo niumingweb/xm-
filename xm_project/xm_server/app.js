@@ -7,6 +7,7 @@ const session=require('express-session');
 //引入users路由
 const userRouter=require('./routes/users.js');
 const productRouter=require('./routes/product.js')
+const cartRouter=require('./routes/cart.js')
 //创建服务器
 var app=express();
 //设置监听
@@ -33,5 +34,6 @@ app.use(session({
 //使用路由
 app.use('/users',userRouter);  //用户路由
 app.use('/product',productRouter);  //商品路由
+app.use('/cart',cartRouter)    //购物车路由
 
 

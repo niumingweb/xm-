@@ -15,7 +15,7 @@
         </div>
         <div class="head_right">
           <div>
-            <div class="user_container" @mouseover="getW" @mouseout="getO"><a href="javascript:;"><span>{{uname}}</span><svg v-show="getw" style="text-align=left;" t="1569418787423" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2474" width="20" height="20"><path d="M512 724.992c-12.288 0-23.552-9.728-31.744-18.432L154.624 380.928c-17.408-17.408-6.656-35.328 11.264-52.736 16.384-16.384 32.256-31.744 52.736-11.264l293.888 293.888L805.888 317.44c17.408-17.408 32.768-6.144 51.2 12.288 17.408 17.408 29.696 33.792 12.288 51.2L543.744 706.56c-8.192 8.704-19.456 18.432-31.744 18.432z" fill="#424242" p-id="2475"></path></svg>
+            <div class="user_container" @mouseover="getW" @mouseout="getO"><a href="javascript:;"><span>{{$store.state.uname}}</span><svg v-show="getw" style="text-align=left;" t="1569418787423" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2474" width="20" height="20"><path d="M512 724.992c-12.288 0-23.552-9.728-31.744-18.432L154.624 380.928c-17.408-17.408-6.656-35.328 11.264-52.736 16.384-16.384 32.256-31.744 52.736-11.264l293.888 293.888L805.888 317.44c17.408-17.408 32.768-6.144 51.2 12.288 17.408 17.408 29.696 33.792 12.288 51.2L543.744 706.56c-8.192 8.704-19.456 18.432-31.744 18.432z" fill="#424242" p-id="2475"></path></svg>
             <svg v-show="getw==false" t="1569585103741" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2455" width="20" height="20"><path d="M944.083879 289.536302c14.264888 18.286482 15.462157 41.208541 2.670829 51.196009l-417.191704 325.421604c-2.885723 2.261507-12.156878 7.828292-13.732769 9.578146-15.544021 17.181311-37.893029 22.338774-49.947576 11.461029l-392.908648-354.309538c-12.054547-10.887978-9.271154-33.666774 6.272867-50.889017 15.544021-17.21201 37.893029-22.349007 49.988508-11.471262l357.584118 322.443783 408.258241-318.463122C907.910005 264.516466 929.84969 271.260054 944.083879 289.536302z" p-id="2456" fill="#ff6700"></path></svg>
             </a>
               <p class="shelter"></p> 
@@ -39,6 +39,7 @@
       <div class="cart_container">
         <div class="cart_info">
           <div class="allselect">
+            
             <i>√</i>    
             全选
           </div>
@@ -49,60 +50,186 @@
           <div class="p_total">小计</div>
           <div class="p_handle">操作</div>
         </div>
-        <div class="cart_item">
-          <div class="item_select">
-            <i>
-              √
-            </i>
+        <div class="cart_item_container" v-for="(item,index) of list" :key="index">
+          <div class="cart_item">
+            <div class="item_select">
+              
+              <i>
+                √
+              </i>
+            </div>
+            <div class="item_img">
+              <img :src="item.epic" alt="">
+            </div>
+            <div class="item_title">
+              <a href="" v-text="item.ename">	
+               
+              </a>
+            </div>
+            <div class="item_price">
+              {{item.eprice}}元
+            </div>
+            <div class="item_count">
+            <a href="javascript:;">-</a>
+            <input type="text" value="1">
+            <a href="javascript:;">+</a>
+            </div>
+            <div class="item_total">
+              {{item.ecount*item.eprice}}元
+              </div>
+            <div class="item_handle" @click="Del(index)">
+              x
+            </div>
           </div>
-          <div class="item_img">
-            <img src="" alt="">
+          <div class="extend_buy_box">
+            <div class="extend_buy">
+              <svg t="1570093702506" class="icon first" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3090" width="36" height="36"><path d="M63.79008 512c0 247.54176 200.66816 448.20992 448.20992 448.20992S960.20992 759.54176 960.20992 512s-200.66816-448.20992-448.20992-448.20992S63.79008 264.45824 63.79008 512z m512.16896-255.82592l0 191.86688 191.86688 0L767.82592 575.95904l-191.86688 0L575.95904 767.82592 448.04096 767.82592l0-191.86688L256.17408 575.95904l0-127.91808 191.872 0 0-191.86688 127.91296 0z" fill="#fd5c02" p-id="3091"></path></svg>
+              意外保障服务 9元
+              <a href="javascript:;">了解意外保护
+                <svg t="1570089532371" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3907" width="22" height="22"><path d="M323.01725661 172.11508068c-10.4406554 9.89759614-10.4406554 25.95777177-2e-8 35.85615816l320.49208132 304.03113267-320.49208132 304.02006618c-10.4406554 9.90391963-10.44065539 25.95856201 0 35.8624824 10.43512217 9.90312939 27.36008257 9.90312939 37.79520474 0l333.83300708-316.72228391c0 0 14.16618605-13.12591476 14.16618605-23.16026391 0-9.24782161-14.16618604-23.16579714-14.16618605-23.16579714L360.81325157 172.11508068C350.37733917 162.21116106 333.45237876 162.21116105 323.01725661 172.11508068z" p-id="3908" fill="#ff6700"></path></svg>
+              </a>
+            </div>
+            <div class="extend_repair">
+              <svg t="1570093702506" class="icon first" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3090" width="36" height="36"><path d="M63.79008 512c0 247.54176 200.66816 448.20992 448.20992 448.20992S960.20992 759.54176 960.20992 512s-200.66816-448.20992-448.20992-448.20992S63.79008 264.45824 63.79008 512z m512.16896-255.82592l0 191.86688 191.86688 0L767.82592 575.95904l-191.86688 0L575.95904 767.82592 448.04096 767.82592l0-191.86688L256.17408 575.95904l0-127.91808 191.872 0 0-191.86688 127.91296 0z" fill="#fd5c02" p-id="3091"></path></svg>
+              延长报修服务 29元
+              <a href="javascript:;">了解延长报修
+                <svg t="1570089532371" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3907" width="22" height="22"><path d="M323.01725661 172.11508068c-10.4406554 9.89759614-10.4406554 25.95777177-2e-8 35.85615816l320.49208132 304.03113267-320.49208132 304.02006618c-10.4406554 9.90391963-10.44065539 25.95856201 0 35.8624824 10.43512217 9.90312939 27.36008257 9.90312939 37.79520474 0l333.83300708-316.72228391c0 0 14.16618605-13.12591476 14.16618605-23.16026391 0-9.24782161-14.16618604-23.16579714-14.16618605-23.16579714L360.81325157 172.11508068C350.37733917 162.21116106 333.45237876 162.21116105 323.01725661 172.11508068z" p-id="3908" fill="#ff6700"></path></svg>
+              </a>
+            </div>
           </div>
-          <div class="item_title">
-            <a href="">	
-              Redmi Note 8 6GB+64GB 曜石黑 64GB
-            </a>
+          <!-- <div class="cart_item">
+            <div class="item_select">
+              
+              <i>
+                √
+              </i>
+            </div>
+            <div class="item_img">
+              <img src="" alt="">
+            </div>
+            <div class="item_title">
+              <a href="">	
+                Redmi Note 8 6GB+64GB 曜石黑 64GB
+              </a>
+            </div>
+            <div class="item_price">
+              1199元
+            </div>
+            <div class="item_count">
+            <a href="javascript:;">-</a>
+            <input type="text" value="1">
+            <a href="javascript:;">+</a>
+            </div>
+            <div class="item_total">
+              1199元
+              </div>
+            <div class="item_handle">
+              x
+            </div>
           </div>
-          <div class="item_price">
-            1199元
-          </div>
-          <div class="item_count">
-           
-          </div>
-          <div class="item_total">
-             1199元
-             </div>
-          <div class="item_handle">
-            x
-          </div>
+          <div class="extend_buy_box">
+            <div class="extend_buy">
+              <svg t="1570093702506" class="icon first" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3090" width="36" height="36"><path d="M63.79008 512c0 247.54176 200.66816 448.20992 448.20992 448.20992S960.20992 759.54176 960.20992 512s-200.66816-448.20992-448.20992-448.20992S63.79008 264.45824 63.79008 512z m512.16896-255.82592l0 191.86688 191.86688 0L767.82592 575.95904l-191.86688 0L575.95904 767.82592 448.04096 767.82592l0-191.86688L256.17408 575.95904l0-127.91808 191.872 0 0-191.86688 127.91296 0z" fill="#fd5c02" p-id="3091"></path></svg>
+              意外保障服务 9元
+              <a href="javascript:;">了解意外保护
+                <svg t="1570089532371" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3907" width="22" height="22"><path d="M323.01725661 172.11508068c-10.4406554 9.89759614-10.4406554 25.95777177-2e-8 35.85615816l320.49208132 304.03113267-320.49208132 304.02006618c-10.4406554 9.90391963-10.44065539 25.95856201 0 35.8624824 10.43512217 9.90312939 27.36008257 9.90312939 37.79520474 0l333.83300708-316.72228391c0 0 14.16618605-13.12591476 14.16618605-23.16026391 0-9.24782161-14.16618604-23.16579714-14.16618605-23.16579714L360.81325157 172.11508068C350.37733917 162.21116106 333.45237876 162.21116105 323.01725661 172.11508068z" p-id="3908" fill="#ff6700"></path></svg>
+              </a>
+            </div>
+            <div class="extend_repair">
+              <svg t="1570093702506" class="icon first" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3090" width="36" height="36"><path d="M63.79008 512c0 247.54176 200.66816 448.20992 448.20992 448.20992S960.20992 759.54176 960.20992 512s-200.66816-448.20992-448.20992-448.20992S63.79008 264.45824 63.79008 512z m512.16896-255.82592l0 191.86688 191.86688 0L767.82592 575.95904l-191.86688 0L575.95904 767.82592 448.04096 767.82592l0-191.86688L256.17408 575.95904l0-127.91808 191.872 0 0-191.86688 127.91296 0z" fill="#fd5c02" p-id="3091"></path></svg>
+              延长报修服务 29元
+              <a href="javascript:;">了解延长报修
+                <svg t="1570089532371" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3907" width="22" height="22"><path d="M323.01725661 172.11508068c-10.4406554 9.89759614-10.4406554 25.95777177-2e-8 35.85615816l320.49208132 304.03113267-320.49208132 304.02006618c-10.4406554 9.90391963-10.44065539 25.95856201 0 35.8624824 10.43512217 9.90312939 27.36008257 9.90312939 37.79520474 0l333.83300708-316.72228391c0 0 14.16618605-13.12591476 14.16618605-23.16026391 0-9.24782161-14.16618604-23.16579714-14.16618605-23.16579714L360.81325157 172.11508068C350.37733917 162.21116106 333.45237876 162.21116105 323.01725661 172.11508068z" p-id="3908" fill="#ff6700"></path></svg>
+              </a>
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="cart_clear">
+        <div class="choose">
+          <a href="javascript:;">继续购物</a>
+          <span>|</span>
+          <span>共<i v-text="list.length"></i>件商品，已选择<i>1</i>件商品</span>
+        </div>
+        <div class="checkout">
+          <span>合计：<em>{{totalprice}}</em>元</span>
+          <a href="javascript:;">去结算</a>
+
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import {mapState} from 'vuex'
+
 export default {
-  //获取用户名等信息
-  computed: mapState({
-      uname: state => state.uname,   //将这个值赋值给变量uname
-      uname:'uname'
-      //phone:state => state.phone,
-      //phone:"phone"
-   }),
   data(){
     return {
       getw:true,
-      
+      list:[]
+     
     }
   },
+  computed:{
+    totalprice(){
+      var total=0;
+      for(var i=0;i<this.list.length;i++){
+        total+=this.list[i].ecount*this.list[i].eprice
+        
+      }
+      return total
+    } 
+  },
   methods:{
+     
     getW(){
       this.getw=false
     },
     getO(){
       this.getw=true
+    },
+    Del(i){
+      //获取商品的eid
+      console.log(this.list[i].eid)
+      this.$messagebox.confirm("是否删除当前商品").then(res=>{
+        var eid=this.list[i].eid
+        var url="/cart/cart_del";
+        var data={eid}
+        this.axios.get(url,{params:data}).then(res=>{
+          console.log(res.data)
+          if(res.data.code==1){
+            alert("删除成功")
+            this.loadMore()  //刷新
+          }else{
+            alert("删除失败")
+          }
+        })
+      }).catch(err=>{})
+    },
+    //加载购物车信息
+    loadMore(){
+      var url="/cart/cart_info"
+      this.axios.get(url).then(res=>{
+        if(res.data.code==-1){
+          this.$messagebox("消息","请先登录").then(res=>{
+            this.$router.push('/user_log')
+          })
+        }else{
+          console.log(res)
+          this.list=res.data.data
+          console.log(this.list)
+          
+        }
+      })
     }
+  },
+  
+  created(){
+    this.loadMore()
+    
+  },
+  mounted(){
+    
   }
 }
 </script>
@@ -142,7 +269,7 @@ export default {
   }
   .logo img{
     width:48px;
-    margin-bottom:7px;
+    margin-bottom:48px;
   }
   /*购物车字*/
   .cart_title h1{
@@ -150,7 +277,11 @@ export default {
     font-size:28px;
     font-weight:normal;
     margin-right:10px;
+    line-height: 102px;
   }
+  
+    
+ 
   /*温馨提示*/
   .notice{
     color:#747474;
@@ -271,6 +402,8 @@ export default {
   div.allselect{
     width:110px;
     text-align: center;
+    
+    
   }
   div.p_holder{
     width:120px;
@@ -310,6 +443,7 @@ export default {
   .item_select{
     width:110px;
     text-align: center;
+   
   }
   .item_img{
     width:120px;
@@ -320,9 +454,16 @@ export default {
   .item_title{
     width:380px;
   }
+  .item_title a{
+    color:#424242;
+    font-size:18px;
+    white-space: nowrap;
+    
+  }
   .item_price{
     width:158px;
     text-align: center;
+    
   }
   .item_count{
     width:150px;
@@ -331,9 +472,128 @@ export default {
   .item_total{
     width:201px;
     text-align: center;
+    color:#ff6700;
   }
   .item_handle{
     width:80px;
     text-align: center;
+    cursor: pointer;
   }
+  /*设置对号*/
+  /*不懂原理*/
+  .cart_container i{
+    display:inline-block;
+    width:20px;
+    height:20px;
+    background:#ff6700;
+    color:#fff;
+    cursor: pointer;
+    line-height: 20px;  /*！！！*/
+  }
+  .item_select i{
+    margin-left:-32px;
+  }
+  /*单个商品数量*/
+  
+  .item_count a,.item_count input{
+    display:inline-block;
+    height:36px;
+    width:36px;
+    
+  }
+  .item_count input{
+    width:72px !important;
+    outline:none;
+    border-width:0;
+    text-align:center;
+    
+    
+  }
+  .item_count a{
+    color:#757575;
+    font-size:20px;
+    line-height: 35px;
+    border:1px solid #f5f5f5;
+  }
+   /*增加的服务*/
+   .extend_buy_box{
+     margin-left:110px;
+     padding-bottom: 20px;
+    
+   }
+   .extend_buy{
+     width:1100px;
+     height:50px;
+     border:1px solid #f5f5f5;
+     line-height: 50px;
+     padding-left:20px;
+     color:#424242;
+     font-size:14px;
+   }
+   .extend_buy a {
+     color:#ff6700;
+   }
+   .extend_repair{
+     margin-top:20px;
+     width:1100px;
+     height:50px;
+     border:1px solid #f5f5f5;
+     line-height: 50px;
+     padding-left:20px;
+     color:#424242;
+     font-size:14px;
+   }
+   .extend_repair a {
+     color:#ff6700;
+   }
+   /*结算*/
+   .cart_clear{
+     display:flex;
+     justify-content: space-between;
+     width:1226px;
+     height:50px;
+     background:#fff;
+     margin:20px auto;
+     line-height: 50px;
+   }
+   .cart_clear i{
+     color:#ff6700;
+   }
+   .choose{
+     color:#757575;
+     font-size:14px;
+   }
+   .choose a{
+     color:#757575;
+     margin-left:32px;
+   }
+   .choose span{
+     margin-left:16px;
+   }
+   .checkout{
+     display:flex;
+     justify-content: space-between;
+     width:350px;
+   }
+   .checkout a{
+     display:block;
+     width:205px;
+     height:50px;
+     background:#ff6700;
+     text-align:center;
+     color:#fff;
+   }
+   .checkout span{
+     color:#ff6700;
+     font-size:14px;
+   }
+   .checkout em{
+     font-size:30px !important;
+   }
+   /*加号的图片*/
+   .first{
+     width:22px !important;
+     height:22px !important;
+     vertical-align: -0.5em !important;
+   }
 </style>

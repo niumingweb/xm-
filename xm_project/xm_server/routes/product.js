@@ -48,5 +48,6 @@ router.get('/main_detail',function(req,res){
 
 
 
+
 //导出路由
 module.exports=router;

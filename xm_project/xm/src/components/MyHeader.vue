@@ -29,10 +29,10 @@
         <a href="javascript:;">Select Region</a>
       </div>
       <div class="top_car">
-        <a href="javascript:;">
+        <router-link :to="'/cart'">
           <img src="img/header/购物车空.png" alt="">
           <span> 购物车（0）</span>
-        </a>  
+        </router-link>  
       </div>
       <!-- 未登录时显示 -->
        <div class="top_user" v-show="uname==''">
