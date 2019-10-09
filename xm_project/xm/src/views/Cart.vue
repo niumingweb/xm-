@@ -70,9 +70,9 @@
               {{item.eprice}}元
             </div>
             <div class="item_count">
-            <a href="javascript:;">-</a>
-            <input type="text" value="1">
-            <a href="javascript:;">+</a>
+            <a href="javascript:;" @click="minus(index)">-</a>
+            <input type="text" :value="item.ecount">
+            <a href="javascript:;" @click="plus(index)">+</a>
             </div>
             <div class="item_total">
               {{item.ecount*item.eprice}}元
@@ -149,7 +149,7 @@
         <div class="choose">
           <a href="javascript:;">继续购物</a>
           <span>|</span>
-          <span>共<i v-text="list.length"></i>件商品，已选择<i>1</i>件商品</span>
+          <span>共<i>{{totalcount}}</i>件商品，已选择<i>1</i>件商品</span>
         </div>
         <div class="checkout">
           <span>合计：<em>{{totalprice}}</em>元</span>
@@ -166,8 +166,8 @@ export default {
   data(){
     return {
       getw:true,
-      list:[]
-     
+      list:[],
+      
     }
   },
   computed:{
@@ -178,6 +178,13 @@ export default {
         
       }
       return total
+    },
+    totalcount(){
+      var totalnum=0;
+      for(var i=0;i<this.list.length;i++){
+        totalnum+=this.list[i].ecount
+      }
+      return totalnum
     } 
   },
   methods:{
@@ -188,6 +195,36 @@ export default {
     getO(){
       this.getw=true
     },
+    //数量-
+    minus(index){
+      var ecount=this.list[index].ecount
+      if(ecount>1){
+        var eid=this.list[index].eid
+        var data={eid}
+        console.log(ecount)
+        var url="/cart/cart_minus"
+        this.axios.get(url,{params:data}).then(res=>{
+          console.log(res.data.code)
+          if(res.data.code=1){
+            this.loadMore()
+          }
+        })
+      }
+    },
+    //数量+1
+    plus(index){
+      var eid=this.list[index].eid
+      var data={eid}
+      console.log(data)
+      var url="/cart/cart_plus"
+      this.axios.get(url,{params:data}).then(res=>{
+        console.log(res.data.code)
+        if(res.data.code=1){
+          this.loadMore()
+        }
+      })
+    },
+    
     Del(i){
       //获取商品的eid
       console.log(this.list[i].eid)

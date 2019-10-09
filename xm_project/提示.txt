@@ -82,6 +82,9 @@ https://www.jb51.net/article/138460.htm
 Vue+Element+computed实现购物车
 https://www.cnblogs.com/CinderellaStory/p/10546263.html
 
+localstorage的使用方法
+https://www.cnblogs.com/houzheng/p/9067110.html
+
 微软雅黑
 大标题2号  小标题4号   加粗加黑
 内容小4 小5

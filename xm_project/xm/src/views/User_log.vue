@@ -174,9 +174,10 @@ export default {
             var phone1=res.data[0].phone
             this.$store.commit("updateuname",uname1)
             this.$store.commit("updatephone",phone1)
-          this.$messagebox("提示", "登录成功").then(res => {
+            this.$messagebox("提示", "登录成功").then(res => {
             this.$router.replace("/index");
           });
+           
         }
       });
     },
