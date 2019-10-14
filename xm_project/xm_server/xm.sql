@@ -117,7 +117,7 @@ INSERT INTO star_product VALUES
 CREATE TABLE cart(
   uid INT,                                  #用户编号
   eid INT,                                  #家电品编号
-  ename varchar(32),                        #家电商品名称
+  ename VARCHAR(32),                        #家电商品名称
   eprice DECIMAL(10,2),                     #家电商品价格
   epic VARCHAR(32),                         #家电商品图片
   ecount INT                                #数量
@@ -125,3 +125,22 @@ CREATE TABLE cart(
 INSERT INTO cart VALUES
 (1,1,'小米净水器600G',2199,'img/details/e1.jpg',1),
 (1,2,'米家扫地机器人1S',1999,'img/details/e5.jpg',1);
+
+#购物车商品推荐表
+CREATE TABLE p_cart(
+  eid INT,
+  ename VARCHAR(32),
+  eprice DECIMAL(10,2),
+  edpic VARCHAR(32)                                 
+);
+INSERT INTO p_cart VALUES
+(3," Redmi K20 全网通版 8GB+256GB ",2229,"img/cart/cart1.png"),
+(4," Redmi Note 8 Pro 8GB+128GB 全网通版 ",1799,"img/cart/cart2.jpg"),
+(5," Redmi Note 8 Pro 标准高透贴膜(高透) ",1599,"img/cart/cart3.png"),
+(6," Redmi Note 8 Pro 6GB+128GB ",2229,"img/cart/cart4.jpg"),
+(7," Redmi Note 8 Pro 标准高透贴膜(高透) ",999,"img/cart/cart5.jpg"),
+(8," Redmi K20 Pro 全网通版 6GB+128GB ",1399,"img/cart/cart6.jpg"),
+(9," Redmi Note 8 4GB+64GB ",799,"img/cart/cart7.jpg"),
+(10," Redmi Note 8 6GB+64GB ",2119,"img/cart/cart8.jpg"),
+(11," Redmi Note 8 6GB+128GB ",1499,"img/cart/cart9.jpg"),
+(12," Redmi Note 8 Pro 6GB+128GB ",1599,"img/cart/cart1.png")

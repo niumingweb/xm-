@@ -76,7 +76,7 @@
            <p class="totalprice">总计 : {{p_details.eprice}}元</p>
          </div>
          <div class="probuybox">
-           <a class="probuy" href="javascript:;">登录后购买</a>
+           <a class="probuy" href="javascript:;" @click="add">点击添加购物车</a>
            <a class="prolike" href="javascript:;"><img src="" alt="">喜欢</a>
            
          </div>
@@ -119,6 +119,30 @@ export default {
     this.onload()
   },
   methods:{
+    add(){
+      var eid=this.p_details.eid
+      var ename=this.p_details.ename
+      var eprice=this.p_details.eprice
+      var edpic=this.p_details.dpic1
+      
+      var url="cart/addcart"
+      var data={eid,ename,eprice,edpic}
+      console.log(data)
+      this.axios.get(url,{params:data}).then(res=>{
+        console.log(res)
+        if(res.data.code==-1){
+          this.$messagebox("消息","请先登录").then(res=>{
+            this.$router.push('/user_log')
+          })
+          return
+        }
+        if(res.data.code==1){
+          alert("添加成功")
+        }else{
+          alert("添加失败")
+        }
+      })
+    },
     log_out(){
       this.active_log=false;
     },

@@ -93,6 +93,7 @@
 </template>
 <script>
 export default {
+  
   /*登录功能*/
   data() {
     return {
@@ -172,8 +173,10 @@ export default {
             //console.log(res.data[0].uid);
             var uname1=res.data[0].uname
             var phone1=res.data[0].phone
+            
             this.$store.commit("updateuname",uname1)
             this.$store.commit("updatephone",phone1)
+            console.log(sessionStorage.uname)
             this.$messagebox("提示", "登录成功").then(res => {
             this.$router.replace("/index");
           });
@@ -212,12 +215,14 @@ export default {
           this.$store.commit("updateuname",uname1)
           this.$store.commit("updatephone",phone1)
           this.$messagebox("消息","登陆成功").then(res=>{
-            this.$router.replace({path:'/index'})
+            // this.$router.replace({path:'/index'})
+            this.$router.go(-1)
           })
         }
       })
     }
-  }
+  },
+  
 };
 </script>
 <style scoped>

@@ -40,7 +40,7 @@
         <div class="cart_info">
           <div class="allselect">
             
-            <i>√</i>    
+            <i :class="allchoose?'choosed':''" @click="change">√</i>    
             全选
           </div>
           <div class="p_holder"></div>
@@ -54,7 +54,7 @@
           <div class="cart_item">
             <div class="item_select">
               
-              <i>
+              <i :class="item.cb?'choosed':''" @click="chooseone(index)">
                 √
               </i>
             </div>
@@ -149,7 +149,7 @@
         <div class="choose">
           <a href="javascript:;">继续购物</a>
           <span>|</span>
-          <span>共<i>{{totalcount}}</i>件商品，已选择<i>1</i>件商品</span>
+          <span>共<i>{{totalcount}}</i>件商品，已选择<i>{{totalchoose}}</i>件商品</span>
         </div>
         <div class="checkout">
           <span>合计：<em>{{totalprice}}</em>元</span>
@@ -157,6 +157,7 @@
 
         </div>
       </div>
+      <cart-extra></cart-extra>
     </div>
   </div>
 </template>
@@ -167,28 +168,74 @@ export default {
     return {
       getw:true,
       list:[],
-      
+      cb:true
     }
   },
   computed:{
+    //商品总价
     totalprice(){
       var total=0;
       for(var i=0;i<this.list.length;i++){
-        total+=this.list[i].ecount*this.list[i].eprice
-        
+        if(this.list[i].cb){
+          total+=this.list[i].ecount*this.list[i].eprice
+        }
       }
       return total
     },
+    //商品总量
     totalcount(){
       var totalnum=0;
       for(var i=0;i<this.list.length;i++){
         totalnum+=this.list[i].ecount
       }
       return totalnum
+    },
+    //选中的数量
+    totalchoose(){
+      var sum=0
+      for(var item of this.list){
+        if(item.cb){
+          // sum+=1
+          sum+=parseInt(item.ecount)
+        }
+      }
+      return sum
+    },
+    //全选
+    allchoose(){
+      var sum=0
+      for(var item of this.list){
+        if(item.cb){
+          sum++
+        }
+      }
+      if(sum==this.list.length){
+        this.cb=true
+      }else{
+        this.cb=false
+      }
+      return this.cb
     } 
   },
+  
+  
   methods:{
-     
+    change(){
+      if(this.cb){
+        this.cb=false
+        for(var item of this.list){
+          item.cb=this.cb
+        }
+      }else{
+        this.cb=true
+        for(var item of this.list){
+          item.cb=this.cb
+        }
+      }
+    },
+    chooseone(i){
+      this.list[i].cb?this.list[i].cb=false:this.list[i].cb=true
+    },
     getW(){
       this.getw=false
     },
@@ -253,6 +300,11 @@ export default {
           })
         }else{
           console.log(res)
+          
+          //为每个元素添加一个属性cb 是否为选中状态
+          for(var item of res.data.data){
+            item.cb=true
+          }
           this.list=res.data.data
           console.log(this.list)
           
@@ -266,8 +318,9 @@ export default {
     
   },
   mounted(){
-    
-  }
+     console.log(sessionStorage.uname)
+     this.$store.state.uname=sessionStorage.uname
+   },
 }
 </script>
 <style scoped>
@@ -522,10 +575,14 @@ export default {
     display:inline-block;
     width:20px;
     height:20px;
-    background:#ff6700;
+    /* background:#ff6700; */
+    border:1px solid #999;
     color:#fff;
     cursor: pointer;
     line-height: 20px;  /*！！！*/
+  }
+  i.choosed{
+    background:#ff6700 !important;
   }
   .item_select i{
     margin-left:-32px;

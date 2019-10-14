@@ -5,6 +5,7 @@ import store from './store'
 import axios from 'axios'
 import MyFooter from './components/MyFooter'
 import MyHeader from './components/MyHeader'
+import CartExtra from './components/CartExtra'
 import MintUI from 'mint-ui'
 import "mint-ui/lib/style.css"
 import ElementUI from 'element-ui';
@@ -20,6 +21,7 @@ axios.defaults.baseURL="http://127.0.0.1:4000"
 Vue.config.productionTip = false
 Vue.component("my-footer",MyFooter)
 Vue.component("my-header",MyHeader)
+Vue.component("cart-extra",CartExtra)
 //1.11创建存储对象
 
 

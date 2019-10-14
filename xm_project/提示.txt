@@ -85,6 +85,20 @@ https://www.cnblogs.com/CinderellaStory/p/10546263.html
 localstorage的使用方法
 https://www.cnblogs.com/houzheng/p/9067110.html
 
+用session和vuex实现刷新不丢失数据（参考）
+https://www.cnblogs.com/lalalagq/p/9901150.html
+https://www.cnblogs.com/goloving/p/9074574.html
+https://www.cnblogs.com/zou1234/p/9289046.html
+
+
+vscode react中标签自动补全 vscode jsx语法自动补全html标签
+
+https://blog.csdn.net/shaleilei/article/details/82984228
+
+刷新页面方法
+https://www.cnblogs.com/yinn/p/9056731.html
+
+
 微软雅黑
 大标题2号  小标题4号   加粗加黑
 内容小4 小5
