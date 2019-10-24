@@ -17,7 +17,10 @@ Vue.use(ElementUI)
 //Vue.use(Vuex)
 axios.defaults.withCredentials=true
 Vue.prototype.axios=axios
+//不上线地址!!!!!!
 axios.defaults.baseURL="http://127.0.0.1:4000"
+//上线改动!!!!!!!!!! 注释上条代码
+
 Vue.config.productionTip = false
 Vue.component("my-footer",MyFooter)
 Vue.component("my-header",MyHeader)

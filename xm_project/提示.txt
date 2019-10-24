@@ -2,6 +2,17 @@ github
 344943259@qq.com
 code niuming1989
 
+新浪云上线(前后端未分离)
+先按教程上传部署node.js服务器
+参考网址https://blog.csdn.net/SilenceJude/article/details/85125765
+vue前端:
+1.main.js文件更改axios的默认值,即注释之前的默认值设定"axios.defaults.baseURL=127.0.0.1:端口号"
+2.输入npm run build打包
+3.将打包产生的dist文件夹里的文件复制到服务器端的public文件下(静态委托的文件)
+4.重新上传
+5.输入新浪云的域名就可进入主页
+
+
 git使用前配置
  git config --global  user.name 用户名
  git config --global  user.email  邮箱名称

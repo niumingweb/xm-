@@ -15,7 +15,7 @@
 <!-- 轮播图部分 -->
 <div id="lunbo">
   <!-- 轮播图左侧选项 -->
-  <ul>
+   <ul>
     <li>
       <a href="">
        <span>手机 电话卡</span>
@@ -607,7 +607,7 @@
         </ul>
       </div>
     </li>
-  </ul>
+  </ul> 
   <!-- 轮播图底部图——————————————暂时 -->
   <div class="carousel">
     <template>
@@ -995,6 +995,7 @@ export default {
 .carousel img{
   width:1226px;
   height:460px;
+  
 } 
 
 

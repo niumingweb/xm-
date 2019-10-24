@@ -1,7 +1,7 @@
 <template>
  <div>
   <div id="logo">
-       <a href="javascript:;"><img src="img/user_log/mistore_logo.png" alt=""></a>
+       <router-link :to="'/index'"><img src="img/user_log/mistore_logo.png" alt=""></router-link>
   </div>
      <!-- 背景 -->
      <div id="bg">
@@ -26,7 +26,7 @@
                 <div id="log_type_link">
                   <a href="javascript:;" @click="phone_login">手机短信登录/注册</a>
                   <span>
-                    <a href="javascript:;">立即注册</a>
+                    <router-link :to="'/user_reg'">立即注册</router-link>
                     <span>|</span>
                     <a href="javascript:;">忘记密码?</a> 
                   </span>
